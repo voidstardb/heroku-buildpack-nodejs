@@ -183,3 +183,12 @@ echo "Dependencies installed" | indent
 echo "-----> Building runtime environment"
 mkdir -p $BUILD_DIR/.profile.d
 echo "export PATH=\"\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\"" > $BUILD_DIR/.profile.d/nodejs.sh
+
+# If a makefile exists, there are extra custom build steps (e.g. jshint,
+# minification, validation checks, etc.) that need to be run.  Makefile
+# should look at ENV to determine release vs. debug.
+echo "-----> Building runtime environment"
+if [ -f $BUILD_DIR/Makefile ]; then
+	echo "-----> Makefile detected. Running make"
+	cd $BUILD_DIR; make
+fi
