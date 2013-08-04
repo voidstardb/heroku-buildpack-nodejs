@@ -195,7 +195,7 @@ if [ -f $BUILD_DIR/Makefile ]; then
 
 	# If make fails, the compilation of the build fails. Don't deploy!
 	if [ $? -ne 0 ]; then
-		echo "Buildpack compilation failure: Makefile failed.
+		echo "Buildpack compilation failure: Makefile failed."
 		exit $?
 	fi
 fi
